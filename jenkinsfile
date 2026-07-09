@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+stage('Verify POM') {
+    steps {
+        bat 'type pom.xml'
+    }
+}
         stage('Build') {
             steps {
                 bat 'mvn clean test'
