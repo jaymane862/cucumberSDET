@@ -1,0 +1,23 @@
+pipeline {
+   agent any
+   stages {
+       
+            stage('Code Clone') {
+                steps {
+                     git branch: 'master',
+                     url: 'https://github.com/jaymane862/cucumberSDET.git'
+             }
+        }
+        stage('Run Tests')  {
+                steps {
+                bat 'mvn clean test'
+           }
+        }
+}
+        post {
+          always {
+          junit 'target/surefire-reports/*.xml'
+
+          }
+          }
+      }
