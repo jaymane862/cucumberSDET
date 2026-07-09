@@ -7,11 +7,11 @@ stage('Verify POM') {
         bat 'type pom.xml'
     }
 }
-        stage('Build') {
-            steps {
-                bat 'mvn clean test'
-            }
-        }
+stage('Effective POM') {
+    steps {
+        bat 'mvn help:effective-pom'
+    }
+}
     }
 
     post {
